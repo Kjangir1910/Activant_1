@@ -1,0 +1,19 @@
+.NavBar {
+    background-color: rgba(54, 53, 53, 0.411);
+    display: flex;
+    width: 100%;
+  }
+  
+  .NavBar li {
+    list-style: none;
+    padding: 14px 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .NavBar li:hover {
+    color: #575757;
+  }
+  

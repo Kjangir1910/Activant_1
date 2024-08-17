@@ -1,0 +1,22 @@
+.Footer {
+    background-color: rgba(54, 53, 53, 0.411);
+    display: flex;
+    width: 100%;
+    height: 100px; /* Increase the height for the footer */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Footer li {
+    list-style: none;
+    padding: 14px 20px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .Footer li:hover {
+    color: #575757;
+  }
+  
