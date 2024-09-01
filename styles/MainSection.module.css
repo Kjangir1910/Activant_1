@@ -9,27 +9,30 @@
 
 .formRow {
   display: flex;
-  flex-direction: column; /* Stack form elements vertically on small screens */
-  align-items: flex-start; /* Align items to the start */
-  gap: 10px; /* Space between form elements */
+  flex-direction: row; /* Align form elements and buttons in a row */
+  flex-wrap: wrap; /* Allow wrapping if necessary */
+  gap: 10px; /* Space between elements */
+  align-items: center; /* Center items vertically */
   width: 100%; /* Full width to make room for all items */
-  max-width: 1000px; /* Max width for better readability */
+  max-width: 1200px; /* Max width for better readability */
   margin-bottom: 20px; /* Space between rows */
 }
 
-.formRow label {
-  font-weight: bold;
-}
-
-.formRow input,
-.formRow textarea {
-  width: 100%; /* Full width for small screens */
+.inputField,
+.textAreaField {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.formRow textarea {
+.inputField {
+  flex: 1; /* Allow input fields to take up available space */
+  min-width: 150px; /* Minimum width for input fields */
+}
+
+.textAreaField {
+  flex: 2; /* Allow textarea to take up more space */
+  min-width: 200px; /* Minimum width for textarea */
   height: 80px; /* Height for textarea */
   resize: vertical; /* Allows vertical resizing only */
 }
@@ -37,10 +40,9 @@
 /* Buttons Container */
 .buttonsContainer {
   display: flex;
-  flex-direction: column; /* Stack buttons vertically on small screens */
+  flex-direction: row; /* Align buttons in a row */
   gap: 10px; /* Space between buttons */
-  align-items: flex-start; /* Align buttons to the start */
-  margin-top: 10px; /* Space between form and buttons */
+  align-items: center; /* Center buttons vertically */
 }
 
 .actionButton,
@@ -69,47 +71,41 @@
 
 /* Responsive Design */
 
-/* For Phones (min-width: 320px) */
+/* For Small Devices (min-width: 320px) */
 @media (min-width: 320px) {
   .formRow {
-    flex-direction: column; /* Stack form elements vertically */
+    flex-direction: column; /* Stack elements vertically on very small screens */
+    align-items: stretch; /* Allow items to take full width */
   }
 
-  .buttonsContainer {
-    flex-direction: column; /* Stack buttons vertically */
+  .inputField,
+  .textAreaField {
+    width: 100%; /* Full width for input fields and textareas */
+    margin-bottom: 10px; /* Space between elements */
   }
 }
 
 /* For Tablets (min-width: 600px) */
 @media (min-width: 600px) {
   .formRow {
-    flex-direction: row; /* Align form elements in a row */
-    flex-wrap: wrap; /* Allow wrapping if needed */
-    gap: 20px; /* Increase space between elements */
+    flex-direction: row; /* Align elements in a row */
   }
 
-  .formRow label,
-  .formRow input,
-  .formRow textarea {
-    flex: 1; /* Allow inputs and textareas to grow and take space */
-    min-width: 200px; /* Set a minimum width for better alignment */
-  }
-
-  .buttonsContainer {
-    flex-direction: row; /* Align buttons in a row */
-    margin-top: 0; /* Remove top margin for row layout */
+  .inputField,
+  .textAreaField {
+    width: auto; /* Adjust width for tablets */
+    margin-bottom: 0; /* Remove bottom margin */
   }
 }
 
 /* For Larger Tablets and Small Desktops (min-width: 768px) */
 @media (min-width: 768px) {
-  .formRow {
-    max-width: 100%; /* Ensure full width on larger tablets and desktops */
+  .inputField {
+    min-width: 200px; /* Minimum width for input fields */
   }
 
-  .formRow input,
-  .formRow textarea {
-    width: auto; /* Allow inputs and textareas to adjust width */
+  .textAreaField {
+    min-width: 250px; /* Minimum width for textarea */
   }
 }
 
@@ -117,12 +113,6 @@
 @media (min-width: 1024px) {
   .formRow {
     max-width: 1200px; /* Max width for desktops */
-    flex-direction: row; /* Align form elements in a row */
-    gap: 20px; /* Space between form elements */
-  }
-
-  .formRow input,
-  .formRow textarea {
-    width: auto; /* Adjust width for larger screens */
+    flex-direction: row; /* Keep form elements in a row */
   }
 }
