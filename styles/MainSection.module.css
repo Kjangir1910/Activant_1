@@ -1,20 +1,20 @@
+/* Base Styles */
 .main {
   padding: 20px;
   width: 100%;
   display: flex;
-  flex-direction: column; /* Stack form rows vertically */
+  flex-direction: column; /* Stack form rows vertically by default */
   align-items: center; /* Center the main content horizontally */
 }
 
 .formRow {
   display: flex;
-  align-items: center; /* Align items in the center vertically */
-  justify-content: flex-start; /* Align form elements to the left */
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
-  margin-bottom: 20px; /* Space between rows */
+  flex-direction: column; /* Stack form elements vertically on small screens */
+  align-items: flex-start; /* Align items to the start */
   gap: 10px; /* Space between form elements */
   width: 100%; /* Full width to make room for all items */
-  max-width: 1200px; /* Max width for better readability */
+  max-width: 1000px; /* Max width for better readability */
+  margin-bottom: 20px; /* Space between rows */
 }
 
 .formRow label {
@@ -23,28 +23,30 @@
 
 .formRow input,
 .formRow textarea {
-  width: 200px; /* Fixed width for form elements */
+  width: 100%; /* Full width for small screens */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 .formRow textarea {
-  height: 40px; /* Smaller height to fit in a row */
+  height: 80px; /* Height for textarea */
   resize: vertical; /* Allows vertical resizing only */
 }
 
+/* Buttons Container */
 .buttonsContainer {
   display: flex;
-  flex-direction: row; /* Align buttons in a row */
+  flex-direction: column; /* Stack buttons vertically on small screens */
   gap: 10px; /* Space between buttons */
-  align-items: center; /* Align buttons vertically in the center */
-  margin-left: auto; /* Push buttons to the right */
+  align-items: flex-start; /* Align buttons to the start */
+  margin-top: 10px; /* Space between form and buttons */
 }
 
-.actionButton {
+.actionButton,
+.deleteButton {
   height: 40px;
-  background-color: #4caf50;
+  background-color: #4caf50; /* Default background color */
   color: white;
   border: none;
   border-radius: 4px;
@@ -52,20 +54,75 @@
   font-size: 16px;
 }
 
-.actionButton:hover {
-  background-color: #45a049;
+.actionButton:hover,
+.deleteButton:hover {
+  background-color: #45a049; /* Green color for hover effect */
 }
 
 .deleteButton {
-  height: 40px;
   background-color: #f44336; /* Red color for delete */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
 }
 
 .deleteButton:hover {
   background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Responsive Design */
+
+/* For Phones (min-width: 320px) */
+@media (min-width: 320px) {
+  .formRow {
+    flex-direction: column; /* Stack form elements vertically */
+  }
+
+  .buttonsContainer {
+    flex-direction: column; /* Stack buttons vertically */
+  }
+}
+
+/* For Tablets (min-width: 600px) */
+@media (min-width: 600px) {
+  .formRow {
+    flex-direction: row; /* Align form elements in a row */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    gap: 20px; /* Increase space between elements */
+  }
+
+  .formRow label,
+  .formRow input,
+  .formRow textarea {
+    flex: 1; /* Allow inputs and textareas to grow and take space */
+    min-width: 200px; /* Set a minimum width for better alignment */
+  }
+
+  .buttonsContainer {
+    flex-direction: row; /* Align buttons in a row */
+    margin-top: 0; /* Remove top margin for row layout */
+  }
+}
+
+/* For Larger Tablets and Small Desktops (min-width: 768px) */
+@media (min-width: 768px) {
+  .formRow {
+    max-width: 100%; /* Ensure full width on larger tablets and desktops */
+  }
+
+  .formRow input,
+  .formRow textarea {
+    width: auto; /* Allow inputs and textareas to adjust width */
+  }
+}
+
+/* For Desktops (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .formRow {
+    max-width: 1200px; /* Max width for desktops */
+    flex-direction: row; /* Align form elements in a row */
+    gap: 20px; /* Space between form elements */
+  }
+
+  .formRow input,
+  .formRow textarea {
+    width: auto; /* Adjust width for larger screens */
+  }
 }
