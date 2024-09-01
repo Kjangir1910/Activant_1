@@ -43,28 +43,25 @@ const MainSection = () => {
     <main className={styles.main}>
       {rows.map((row, index) => (
         <div key={index} className={styles.formRow}>
-          <label htmlFor={`name-${index}`}>Name: </label>
           <input
             type="text"
-            id={`name-${index}`}
-            name="name"
+            className={styles.inputField}
+            placeholder="Name"
             value={row.name}
             onChange={(e) => handleChange(index, 'name', e.target.value)}
           />
 
-          <label htmlFor={`tel-${index}`}>Phone No: </label>
           <input
             type="tel"
-            id={`tel-${index}`}
-            name="tel"
+            className={styles.inputField}
+            placeholder="Phone No"
             value={row.tel}
             onChange={(e) => handleChange(index, 'tel', e.target.value)}
           />
 
-          <label htmlFor={`address-${index}`}>Address:</label>
           <textarea
-            id={`address-${index}`}
-            name="address"
+            className={styles.textAreaField}
+            placeholder="Address"
             value={row.address}
             onChange={(e) => handleChange(index, 'address', e.target.value)}
           ></textarea>
